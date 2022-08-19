@@ -3,6 +3,7 @@ package cracking.code.fb;
 import java.util.Arrays;
 
 public class Dummy {
+	// main method
 	public static void main(String[] args) {
 		System.out.printf("Checking %s", "Amar");
 		System.out.println(getTotalTime(new int[] { 4, 2, 1, 3 }));
