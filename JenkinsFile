@@ -2,21 +2,12 @@ pipeline {
     agent {
             docker {
                 image 'maven:3.9.6-eclipse-temurin-21' // Maven 3.9.6 with JDK 21
-                args '-v $HOME/.m2:/root/.m2' // Mounts Maven cache
+                args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
             }
         }
 
     stages {
-        stage('Host Setup') {
-            // Runs on the host before entering the Docker container
-            steps {
-                sh '''
-                    # Ensure .m2/repository exists on the host and is writable
-                    mkdir -p $HOME/.m2/repository
-                    chmod -R 755 $HOME/.m2
-                '''
-            }
-        }
+
 
         stage('Checkout') {
             steps {
