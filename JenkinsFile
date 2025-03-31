@@ -1,9 +1,9 @@
 pipeline {
-    agent any // Runs on any available Jenkins agent
-
-    tools {
-        maven 'Maven' // Assumes a Maven installation named 'Maven' in Jenkins global config
-        jdk 'JDK'     // Assumes a JDK installation named 'JDK' in Jenkins global config
+    agent {
+        docker {
+            image 'maven:3.9.6-eclipse-temurin-21' // Maven 3.9.6 with JDK 21
+            args '-v $HOME/.m2:/root/.m2' // Mounts Maven cache for faster builds
+        }
     }
 
     stages {
