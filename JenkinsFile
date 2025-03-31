@@ -10,10 +10,6 @@ pipeline {
         stage('Setup') {
             steps {
                 sh '''
-                    if ! command -v docker >/dev/null 2>&1; then
-                        echo "Docker not found. Please install Docker on the Jenkins agent."
-                        exit 1
-                    fi
                     docker --version
                     mkdir -p $HOME/.m2
                 '''
