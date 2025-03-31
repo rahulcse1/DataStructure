@@ -7,14 +7,6 @@ pipeline {
     }
 
     stages {
-        stage('Setup') {
-            steps {
-                sh '''
-                    docker --version
-                    mkdir -p $HOME/.m2
-                '''
-            }
-        }
 
         stage('Checkout') {
             steps {
